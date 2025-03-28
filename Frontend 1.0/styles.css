@@ -379,7 +379,7 @@ body {
 	cursor: pointer;
 }
 /* Register Form */
-.register {
+.container-a {
 	max-width: 600px;
 	width: 50%;
 	background: white;
@@ -390,18 +390,18 @@ body {
 	text-align: center;
 }
 
-.register h2 {
+.container-a h2 {
 	font-size: 22px;
 	margin-bottom: 15px;
 	color: #333;
 }
 
-.register .mb-3 {
+.container-a .mb-3 {
 	margin-bottom: 15px;
 	text-align: left;
 }
 
-.register label {
+.container-a label {
 	font-size: 14px;
 	color: #555;
 	font-weight: bold;
@@ -409,7 +409,7 @@ body {
 	margin-bottom: 5px;
 }
 
-.register input {
+.container-a input {
 	width: 100%;
 	padding: 10px;
 	border: 1px solid #ccc;
@@ -417,13 +417,13 @@ body {
 	font-size: 16px;
 }
 
-.register input:focus {
+.container-a input:focus {
 	border-color: #03ca93;
 	outline: none;
 	box-shadow: 0 0 5px rgba(3, 202, 147, 0.5);
 }
 
-.register .btn {
+.container-a .btn {
 	width: 100%;
 	padding: 12px;
 	background: #03ca93;
@@ -435,22 +435,22 @@ body {
 	transition: background 0.3s;
 }
 
-.register .btn:hover {
+.container-a .btn:hover {
 	background: #029e74;
 }
 
-.register p {
+.container-a p {
 	margin-top: 15px;
 	font-size: 14px;
 }
 
-.register a {
+.container-a a {
 	color: #03ca93;
 	text-decoration: none;
 	font-weight: bold;
 }
 
-.register a:hover {
+.container-a a:hover {
 	text-decoration: underline;
 }
 .register-btn {
