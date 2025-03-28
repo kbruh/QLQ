@@ -33,3 +33,21 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const profileContainer = document.querySelector(".profile-container");
+    const profileMenu = document.querySelector(".profile-menu");
+
+    profileContainer.addEventListener("click", (event) => {
+        profileContainer.classList.toggle("active");
+        event.stopPropagation();
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", (event) => {
+        if (!profileContainer.contains(event.target)) {
+            profileContainer.classList.remove("active");
+        }
+    });
+});

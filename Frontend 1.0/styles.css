@@ -321,3 +321,58 @@ body {
 
 
 
+/* Profile Dropdown */
+/* Profile Container */
+/* Profile Dropdown Menu (Smaller & Compact) */
+.profile-menu {
+    position: absolute;
+    top: 100%; /* Right below the profile picture */
+    left: 50%; /* Center it */
+    transform: translateX(-50%); /* Ensure proper centering */
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 5px 0; /* Less padding for compact look */
+    width: 120px; /* Smaller width */
+    font-size: 14px; /* Reduce text size */
+    display: none;
+}
+
+.profile-menu li {
+    padding: 8px 0; /* Less padding */
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s;
+}
+
+.profile-menu li:hover {
+    background: #03ca93;
+    color: white;
+}
+
+
+/* Show menu when profile-container is active */
+.profile-container.active .profile-menu {
+    display: block;
+}
+
+
+/* Fix Navbar Alignment */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between icons and profile pic */
+}
+
+.nav-icons {
+    display: flex;
+    gap: 15px; /* Space between email & bell */
+}
+
+.profile-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
