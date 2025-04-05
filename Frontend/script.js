@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `;
 	} else {
-		authContainer.innerHTML = `<a href="register.html" class="register-btn">Đăng Ký</a> <a href="login.html" class="login-btn">Đăng Nhập</a>`;
+		authContainer.innerHTML = `<a href="login.html" class="login-btn">Đăng Nhập</a>`;
 	}
 });
 
