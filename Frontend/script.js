@@ -69,3 +69,20 @@ document.addEventListener("DOMContentLoaded", () => {
 		authContainer.innerHTML = `<a href="register.html" class="register-btn">Đăng ký</a>`;
 	}
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+	fetch("/QLQ/Backend/config/check_errors.php")
+		.then((response) => response.json())
+		.then((errors) => {
+			if (errors.length > 0) {
+				let errorContainer = document.createElement("div");
+				errorContainer.style.color = "red";
+				errors.forEach((error) => {
+					let p = document.createElement("p");
+					p.textContent = error;
+					errorContainer.appendChild(p);
+				});
+				document.body.prepend(errorContainer);
+			}
+		});
+});
