@@ -43,7 +43,11 @@
 			<main class="main-content">
 				<!-- Navbar -->
 				<nav class="navbar">
-					<a href="index.html" class="logo">🍽️ KbruhEats</a>
+					<a href="index.php" class="logo-link">
+						<div class="logo-header">
+							<img style="width: 60px; margin-bottom: -30px; margin-top: -30px" src="./images/food.png" alt="App Logo" class="logo-img" />
+						</div>
+					</a>
 					<div class="nav-right">
 						<div class="auth-container">
 							<!-- Hiển thị bằng JavaScript -->

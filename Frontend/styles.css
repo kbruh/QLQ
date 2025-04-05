@@ -98,7 +98,6 @@ body {
 	z-index: 1000;
 }
 
-
 .form-container {
 	margin-top: -35px;
 	background-color: white;
@@ -107,37 +106,35 @@ body {
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 	width: 100%;
 	max-width: 200px;
-  }
+}
 
 .logo-header {
 	border-radius: 20px;
 	padding: 10px;
 	text-align: center;
 	margin-bottom: 10px;
-  }
-  
-  .logo-img {
+}
+a.logo-link,
+a.logo-link:visited,
+a.logo-link:active {
+	text-decoration: none;
+	color: inherit;
+}
+
+.logo-img {
 	width: 80px; /* Adjust to fit your design */
 	height: auto;
 	margin-bottom: 10px;
-  }
-  
-  .app-name {
+}
+
+.app-name {
 	color: #03ca93;
 	font-size: 28px;
 	font-weight: bold;
-  }
-
-  
+}
 
 .logo {
 	font-size: 22px;
-	font-weight: bold;
-	text-decoration: none;
-	color: #333;
-}
-.logo1 {
-	font-size: 40px;
 	font-weight: bold;
 	text-decoration: none;
 	color: #333;

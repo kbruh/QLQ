@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($stmt->execute()) {
                 $_SESSION["user_id"] = $tk_ma;
                 $_SESSION["username"] = $username;
-                header("Location: /QLQ/Frontend/index.html");
+                header("Location: /QLQ/Frontend/index.php");
                 exit();
             } else {
                 $errors[] = "❌ Đăng ký thất bại, vui lòng thử lại!";
