@@ -86,3 +86,144 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 		});
 });
+
+
+
+
+/* table layout */
+
+
+let tablesVisible = false;
+
+document.querySelectorAll(".submenu li").forEach(item => {
+    item.addEventListener("click", (e) => {
+        const text = e.target.textContent.trim();
+
+        if (text === "Reservations") {
+            const dashboard = document.querySelector(".dashboard");
+
+            if (!tablesVisible) {
+                            dashboard.innerHTML = `
+                <h1>Table Layout</h1>
+                <button id="edit-tables-btn" class="edit-tables-btn">Edit Tables 🛠️</button>
+
+                <div class="table-layout">
+                    <div class="floor" id="table-floor">
+                        <div class="table available">Table for 2</div>
+                        <div class="table booked">Table for 4</div>
+                        <div class="table available">Table for 6</div>
+                        <div class="table available">Table for 4</div>
+                        <div class="table booked">Table for 2</div>
+                        <div class="table available">Table for 8</div>
+                    </div>
+                </div>
+
+                <!-- Edit Tables Popup -->
+                <div id="edit-popup" class="popup" style="display:none;">
+                    <div class="popup-content">
+                        <span class="close-btn" id="edit-close">&times;</span>
+                        <h2>Edit Tables</h2>
+                        <form id="edit-form">
+                            <label for="table-size">Table for:</label>
+                            <select id="table-size">
+                                <option value="2">2</option>
+                                <option value="4">4</option>
+                                <option value="6">6</option>
+                                <option value="8">8</option>
+                                <option value="10">10</option>
+                            </select>
+                            <label for="table-status">Status:</label>
+                            <select id="table-status">
+                                <option value="available">Available</option>
+                                <option value="booked">Booked</option>
+                            </select>
+                            <button type="submit" class="submit-btn">Add Table</button>
+                        </form>
+                        <div id="existing-tables">
+                            <h3>Click a table to delete it 🗑️</h3>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            tablesVisible = true;
+
+            // Edit popup logic
+            const editBtn = document.getElementById("edit-tables-btn");
+            const editPopup = document.getElementById("edit-popup");
+            const editClose = document.getElementById("edit-close");
+            const editForm = document.getElementById("edit-form");
+            const floor = document.getElementById("table-floor");
+            const existingTables = document.getElementById("existing-tables");
+
+            // Open popup
+            editBtn.addEventListener("click", () => {
+                editPopup.style.display = "flex";
+                updateExistingTableList();
+            });
+
+            // Close popup
+            editClose.addEventListener("click", () => {
+                editPopup.style.display = "none";
+            });
+
+            window.addEventListener("click", (e) => {
+                if (e.target === editPopup) {
+                    editPopup.style.display = "none";
+                }
+            });
+
+            // Add table
+            editForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const size = document.getElementById("table-size").value;
+                const status = document.getElementById("table-status").value;
+
+                const newTable = document.createElement("div");
+                newTable.className = `table ${status}`;
+                newTable.textContent = `Table for ${size}`;
+                floor.appendChild(newTable);
+
+                updateExistingTableList();
+            });
+
+            // Update and delete
+            function updateExistingTableList() {
+                existingTables.innerHTML = "<h3>Click a table to delete it 🗑️</h3>";
+                floor.querySelectorAll(".table").forEach((table, index) => {
+                    const clone = table.cloneNode(true);
+                    clone.addEventListener("click", () => {
+                        table.remove();
+                        updateExistingTableList();
+                    });
+                    existingTables.appendChild(clone);
+                });
+            }
+
+            } else {
+                dashboard.innerHTML = `
+                    <h1>Dashboard</h1>
+                    <div class="stats">
+                        <div class="card">
+                            <h3>459</h3>
+                            <p>Total Reservations</p>
+                        </div>
+                        <div class="card">
+                            <h3>$87,561</h3>
+                            <p>Total Revenue</p>
+                        </div>
+                        <div class="card">
+                            <h3>247</h3>
+                            <p>Total Orders</p>
+                        </div>
+                        <div class="card">
+                            <h3>872</h3>
+                            <p>Total Customers</p>
+                        </div>
+                    </div>
+                `;
+                tablesVisible = false;
+            }
+        }
+    });
+});
