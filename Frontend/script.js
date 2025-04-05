@@ -92,24 +92,18 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 		});
 });
-
-
-
-
 /* table layout */
-
-
 let tablesVisible = false;
 
-document.querySelectorAll(".submenu li").forEach(item => {
-    item.addEventListener("click", (e) => {
-        const text = e.target.textContent.trim();
+document.querySelectorAll(".submenu li").forEach((item) => {
+	item.addEventListener("click", (e) => {
+		const text = e.target.textContent.trim();
 
-        if (text === "Reservations") {
-            const dashboard = document.querySelector(".dashboard");
+		if (text === "Reservations") {
+			const dashboard = document.querySelector(".dashboard");
 
-            if (!tablesVisible) {
-                            dashboard.innerHTML = `
+			if (!tablesVisible) {
+				dashboard.innerHTML = `
                 <h1>Table Layout</h1>
                 <button id="edit-tables-btn" class="edit-tables-btn">Edit Tables 🛠️</button>
 
@@ -152,62 +146,61 @@ document.querySelectorAll(".submenu li").forEach(item => {
                 </div>
             `;
 
-            tablesVisible = true;
+				tablesVisible = true;
 
-            // Edit popup logic
-            const editBtn = document.getElementById("edit-tables-btn");
-            const editPopup = document.getElementById("edit-popup");
-            const editClose = document.getElementById("edit-close");
-            const editForm = document.getElementById("edit-form");
-            const floor = document.getElementById("table-floor");
-            const existingTables = document.getElementById("existing-tables");
+				// Edit popup logic
+				const editBtn = document.getElementById("edit-tables-btn");
+				const editPopup = document.getElementById("edit-popup");
+				const editClose = document.getElementById("edit-close");
+				const editForm = document.getElementById("edit-form");
+				const floor = document.getElementById("table-floor");
+				const existingTables = document.getElementById("existing-tables");
 
-            // Open popup
-            editBtn.addEventListener("click", () => {
-                editPopup.style.display = "flex";
-                updateExistingTableList();
-            });
+				// Open popup
+				editBtn.addEventListener("click", () => {
+					editPopup.style.display = "flex";
+					updateExistingTableList();
+				});
 
-            // Close popup
-            editClose.addEventListener("click", () => {
-                editPopup.style.display = "none";
-            });
+				// Close popup
+				editClose.addEventListener("click", () => {
+					editPopup.style.display = "none";
+				});
 
-            window.addEventListener("click", (e) => {
-                if (e.target === editPopup) {
-                    editPopup.style.display = "none";
-                }
-            });
+				window.addEventListener("click", (e) => {
+					if (e.target === editPopup) {
+						editPopup.style.display = "none";
+					}
+				});
 
-            // Add table
-            editForm.addEventListener("submit", (e) => {
-                e.preventDefault();
-                const size = document.getElementById("table-size").value;
-                const status = document.getElementById("table-status").value;
+				// Add table
+				editForm.addEventListener("submit", (e) => {
+					e.preventDefault();
+					const size = document.getElementById("table-size").value;
+					const status = document.getElementById("table-status").value;
 
-                const newTable = document.createElement("div");
-                newTable.className = `table ${status}`;
-                newTable.textContent = `Table for ${size}`;
-                floor.appendChild(newTable);
+					const newTable = document.createElement("div");
+					newTable.className = `table ${status}`;
+					newTable.textContent = `Table for ${size}`;
+					floor.appendChild(newTable);
 
-                updateExistingTableList();
-            });
+					updateExistingTableList();
+				});
 
-            // Update and delete
-            function updateExistingTableList() {
-                existingTables.innerHTML = "<h3>Click a table to delete it 🗑️</h3>";
-                floor.querySelectorAll(".table").forEach((table, index) => {
-                    const clone = table.cloneNode(true);
-                    clone.addEventListener("click", () => {
-                        table.remove();
-                        updateExistingTableList();
-                    });
-                    existingTables.appendChild(clone);
-                });
-            }
-
-            } else {
-                dashboard.innerHTML = `
+				// Update and delete
+				function updateExistingTableList() {
+					existingTables.innerHTML = "<h3>Click a table to delete it 🗑️</h3>";
+					floor.querySelectorAll(".table").forEach((table, index) => {
+						const clone = table.cloneNode(true);
+						clone.addEventListener("click", () => {
+							table.remove();
+							updateExistingTableList();
+						});
+						existingTables.appendChild(clone);
+					});
+				}
+			} else {
+				dashboard.innerHTML = `
                     <h1>Dashboard</h1>
                     <div class="stats">
                         <div class="card">
@@ -228,8 +221,8 @@ document.querySelectorAll(".submenu li").forEach(item => {
                         </div>
                     </div>
                 `;
-                tablesVisible = false;
-            }
-        }
-    });
+				tablesVisible = false;
+			}
+		}
+	});
 });
