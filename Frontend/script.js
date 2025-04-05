@@ -33,42 +33,42 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	});
 });
-
 document.addEventListener("DOMContentLoaded", () => {
-	const profileContainer = document.querySelector(".profile-container");
-	const profileMenu = document.querySelector(".profile-menu");
-
-	profileContainer.addEventListener("click", (event) => {
-		profileContainer.classList.toggle("active");
-		event.stopPropagation();
-	});
-
-	// Close menu when clicking outside
-	document.addEventListener("click", (event) => {
-		if (!profileContainer.contains(event.target)) {
-			profileContainer.classList.remove("active");
-		}
-	});
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-	const isLoggedIn = false; // Thay đổi thành true nếu đã đăng nhập (hoặc nhận từ server)
 	const authContainer = document.querySelector(".auth-container");
 
+	// Kiểm tra giá trị của isLoggedIn và username
+	console.log("isLoggedIn:", isLoggedIn);
+	console.log("username:", username);
+
+	// Hiển thị profile khi người dùng đã đăng nhập
 	if (isLoggedIn) {
 		authContainer.innerHTML = `
-			<div class="nav-icons">
-				<span class="icon">📧</span>
-				<span class="icon">🔔</span>
-			</div>
             <div class="profile-container">
-                <img src="default-avatar-icon-of-social-media-user-vector.jpg" alt="Profile" class="profile-pic">
+				<span class="username">${username}</span>
+                <img src="./images/default-avatar-icon-of-social-media-user-vector.jpg" alt="Profile" class="profile-pic">
                 <ul class="profile-menu">
                     <li>⚙️ Settings</li>
-                    <li>🚪 Logout</li>
+                    <li><a href="/QLQ/Backend/user/logout.php">🚪 Logout</a></li>
                 </ul>
             </div>
         `;
+
+		// Get the profile container after it's been inserted into the DOM
+		const profileContainer = document.querySelector(".profile-container");
+		const profileMenu = document.querySelector(".profile-menu");
+
+		// Toggle profile menu when clicking on the profile container
+		profileContainer.addEventListener("click", (event) => {
+			profileContainer.classList.toggle("active");
+			event.stopPropagation(); // Prevent closing the menu when clicking inside
+		});
+
+		// Close the menu if clicking outside of the profile container
+		document.addEventListener("click", (event) => {
+			if (!profileContainer.contains(event.target)) {
+				profileContainer.classList.remove("active");
+			}
+		});
 	} else {
 		authContainer.innerHTML = `<a href="login.html" class="login-btn">Đăng Nhập</a>`;
 	}

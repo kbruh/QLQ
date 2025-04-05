@@ -359,9 +359,6 @@ a.logo-link:active {
 	overflow-y: auto; /* Enables scrolling */
 }
 
-/* Profile Dropdown */
-/* Profile Container */
-/* Profile Dropdown Menu (Smaller & Compact) */
 .profile-menu {
 	position: absolute;
 	top: 100%; /* Right below the profile picture */
@@ -388,12 +385,17 @@ a.logo-link:active {
 	background: #03ca93;
 	color: white;
 }
+.profile-menu a,
+.profile-menu a:visited,
+.profile-menu a:active {
+	text-decoration: none; /* Remove underline */
+	color: inherit; /* Inherit text color from the parent */
+}
 
 /* Show menu when profile-container is active */
 .profile-container.active .profile-menu {
 	display: block;
 }
-
 /* Fix Navbar Alignment */
 .nav-right {
 	display: flex;
@@ -412,6 +414,7 @@ a.logo-link:active {
 	align-items: center;
 	cursor: pointer;
 }
+
 /* Register Form */
 .container-a {
 	max-width: 600px;

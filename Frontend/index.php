@@ -1,3 +1,17 @@
+<?php 
+session_start();
+
+// Kiểm tra xem người dùng đã đăng nhập chưa
+if (!isset($_SESSION["user_id"])) {
+    // Nếu chưa đăng nhập, chuyển hướng về trang đăng nhập
+    header("Location: /QLQ/Frontend/login.html");
+    exit();
+}
+
+// Nếu đã đăng nhập, lưu thông tin người dùng
+$username = $_SESSION["username"];
+$isLoggedIn = true; // Đánh dấu người dùng đã đăng nhập
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -5,7 +19,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Restaurant Management</title>
 		<link rel="stylesheet" href="styles.css" />
-		<script defer src="script.js"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -102,5 +115,12 @@
 				</form>
 			</div>
 		</div>
+
+		<script>
+			// Pass PHP variables to JavaScript
+			const isLoggedIn = <?php echo json_encode($isLoggedIn); ?>;
+			const username = <?php echo json_encode($username); ?>;
+		</script>
+		<script src="script.js" defer></script>
 	</body>
 </html>
