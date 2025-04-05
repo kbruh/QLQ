@@ -57,6 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	if (isLoggedIn) {
 		authContainer.innerHTML = `
+			<div class="nav-icons">
+				<span class="icon">📧</span>
+				<span class="icon">🔔</span>
+			</div>
             <div class="profile-container">
                 <img src="default-avatar-icon-of-social-media-user-vector.jpg" alt="Profile" class="profile-pic">
                 <ul class="profile-menu">
@@ -66,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `;
 	} else {
-		authContainer.innerHTML = `<a href="register.html" class="register-btn">Đăng ký</a>`;
+		authContainer.innerHTML = `<a href="register.html" class="register-btn">Đăng Ký</a> <a href="login.html" class="login-btn">Đăng Nhập</a>`;
 	}
 });
 
@@ -76,13 +80,15 @@ document.addEventListener("DOMContentLoaded", function () {
 		.then((errors) => {
 			if (errors.length > 0) {
 				let errorContainer = document.createElement("div");
-				errorContainer.style.color = "red";
+				errorContainer.classList.add("error-popup");
+
 				errors.forEach((error) => {
 					let p = document.createElement("p");
 					p.textContent = error;
 					errorContainer.appendChild(p);
 				});
-				document.body.prepend(errorContainer);
+
+				document.body.appendChild(errorContainer);
 			}
 		});
 });
